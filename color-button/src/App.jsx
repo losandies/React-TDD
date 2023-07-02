@@ -21,8 +21,10 @@ function App() {
             </button>
             <input
                 type="checkbox"
+                id="disable-button-checkbox"
                 onClick={() => setCheckboxIsClicked(!checkboxIsClicked)}
             />
+            <label htmlFor="disable-button-checkbox">Disable button</label>
         </div>
     );
 }

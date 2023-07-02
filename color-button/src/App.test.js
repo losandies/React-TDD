@@ -35,7 +35,7 @@ test("button is disabled when checkbox is checked and enabled on second click", 
     const colorButton = screen.getByRole("button", { name: "Change to blue" });
     expect(colorButton).toBeEnabled();
 
-    const checkbox = screen.getByRole("checkbox");
+    const checkbox = screen.getByRole("checkbox", { name: "Disable button" });
 
     fireEvent.click(checkbox);
     expect(colorButton).toBeDisabled();
