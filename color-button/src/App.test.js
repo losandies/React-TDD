@@ -1,5 +1,6 @@
 import { fireEvent, logRoles, render, screen } from "@testing-library/react";
 import App from "./App";
+import { toBeChecked } from "@testing-library/jest-dom/matchers";
 
 test("button has correct initial color", () => {
     render(<App />);
@@ -17,6 +18,28 @@ test("button has correct initial color", () => {
     expect(colorButton).toHaveTextContent("Change to red");
 });
 
-test("button has correct initial text", () => {
+test("initial conditions", () => {
     render(<App />);
+
+    //Check that button starts out enabled
+    const colorButton = screen.getByRole("button", { name: "Change to blue" });
+    expect(colorButton).toBeEnabled();
+    // check that the checkbox starts out unchecked
+
+    const checkbox = screen.getByRole("checkbox");
+    expect(checkbox).not.toBeChecked();
+});
+
+test("button is disabled when checkbox is checked and enabled on second click", () => {
+    render(<App />);
+    const colorButton = screen.getByRole("button", { name: "Change to blue" });
+    expect(colorButton).toBeEnabled();
+
+    const checkbox = screen.getByRole("checkbox");
+
+    fireEvent.click(checkbox);
+    expect(colorButton).toBeDisabled();
+
+    fireEvent.click(checkbox);
+    expect(colorButton).toBeEnabled();
 });
