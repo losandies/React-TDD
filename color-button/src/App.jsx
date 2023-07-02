@@ -13,7 +13,9 @@ function App() {
     return (
         <div className="App">
             <button
-                style={{ backgroundColor: buttonColor }}
+                style={{
+                    backgroundColor: checkboxIsClicked ? "gray" : buttonColor,
+                }}
                 onClick={alternateColors}
                 disabled={checkboxIsClicked}
             >
