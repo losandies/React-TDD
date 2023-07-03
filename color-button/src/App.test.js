@@ -1,6 +1,5 @@
-import { fireEvent, logRoles, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import App, { replaceCamelWithSpaces } from "./App";
-import { toBeChecked } from "@testing-library/jest-dom/matchers";
 
 test("button has correct initial color and ending color", () => {
     render(<App />);
